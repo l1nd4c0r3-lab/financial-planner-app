@@ -1,0 +1,182 @@
+{
+  "common": {
+    "loading": "Caricamento...",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "add": "Aggiungi",
+    "close": "Chiudi",
+    "back": "Indietro",
+    "next": "Avanti",
+    "done": "Fatto",
+    "signIn": "Accedi",
+    "signUp": "Registrati",
+    "signOut": "Esci",
+    "email": "Email",
+    "password": "Password",
+    "or": "o",
+    "continueWith": "oppure continua con"
+  },
+  "tabs": {
+    "home": "Home",
+    "goals": "Obiettivi",
+    "budget": "Budget",
+    "reflect": "Riflessioni",
+    "more": "Altro"
+  },
+  "auth": {
+    "welcomeBack": "Bentornato.",
+    "createAccount": "Crea un account.",
+    "signInSubtitle": "Accedi per continuare il tuo percorso finanziario.",
+    "signUpSubtitle": "Inizia oggi il tuo planner finanziario.",
+    "dontHaveAccount": "Non hai un account?",
+    "alreadyHaveAccount": "Hai già un account?",
+    "continueWithGoogle": "Continua con Google",
+    "connecting": "Connessione...",
+    "welcomeBackMsg": "Bentornato!",
+    "accountCreated": "Account creato! Controlla la email per confermare.",
+    "signInRequired": "Accedi per tracciare",
+    "signInRequiredDesc": "Crea un account gratuito per iniziare ad aggiungere le tue transazioni e obiettivi.",
+    "signInToContinue": "Accedi / Registrati",
+    "continueDemo": "Continua come demo"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "greeting": "Buon {{timeOfDay}},",
+    "thisMonth": "Questo Mese",
+    "income": "Entrate",
+    "expenses": "Uscite",
+    "balance": "Bilancio",
+    "recentTransactions": "Transazioni Recenti",
+    "monthlyProgress": "Progresso Mensile",
+    "noTransactions": "Nessuna transazione",
+    "addFirst": "Aggiungi la tua prima transazione",
+    "quickAdd": "Aggiungi Veloce",
+    "expense": "Uscita",
+    "incomeLabel": "Entrata",
+    "description": "Descrizione",
+    "category": "Categoria",
+    "amount": "Importo"
+  },
+  "goals": {
+    "title": "Impegno Obiettivo",
+    "myGoal": "Il mio obiettivo finanziario",
+    "targetAmount": "Importo Target",
+    "targetDate": "Data Target",
+    "monthlyContribution": "Contributo Mensile",
+    "currentProgress": "Progresso Attuale",
+    "daysLeft": "giorni rimasti",
+    "onTrack": "Nei Tempi",
+    "behindSchedule": "In Ritardo",
+    "goalAchieved": "Obiettivo Raggiunto!",
+    "setYourGoal": "Imposta il Tuo Obiettivo",
+    "saveGoal": "Salva Obiettivo"
+  },
+  "calendar": {
+    "title": "Calendario",
+    "addGoal": "Aggiungi Obiettivo"
+  },
+  "budget": {
+    "title": "Budget Mensile",
+    "setBudget": "Imposta Budget",
+    "spent": "Speso",
+    "remaining": "Rimanente",
+    "overBudget": "Oltre Budget",
+    "of": "di",
+    "progress": "Progresso"
+  },
+  "weekly": {
+    "title": "Tracciatore Settimanale",
+    "week": "Settimana",
+    "weekTotal": "Totale Settimana {{n}}",
+    "byCategory": "Per Categoria",
+    "transactions": "transazioni",
+    "addTransaction": "Aggiungi Transazione"
+  },
+  "reflection": {
+    "title": "Riflessione Mensile",
+    "prompt": "Quale decisione finanziaria ti rende più orgoglioso questo mese?",
+    "proudDecision": "Quale decisione finanziaria ti rende più orgoglioso questo mese?",
+    "lesson": "Qual è la lezione più importante che hai imparato sul denaro questo mese?",
+    "improve": "Cosa faresti diversamente?",
+    "gratitude": "Per cosa sei più grato finanziariamente?",
+    "saveReflection": "Salva Riflessione"
+  },
+  "habits": {
+    "title": "Tracciatore Abitudini",
+    "checkIn": "Check-in Settimanale",
+    "didYouCheck": "Hai controllato le tue finanze questa settimana?",
+    "checkedIn": "Fatto!",
+    "streak": "Serie Attuale",
+    "weeks": "settimane",
+    "checkInPrompt": "Ho revisionato il mio budget e le finanze questa settimana"
+  },
+  "debt": {
+    "title": "Palla di Neve Debiti",
+    "totalDebt": "Debito Totale",
+    "totalPaid": "Totale Pagato",
+    "remaining": "Rimanente",
+    "snowballPayment": "Pagamento Palla di Neve",
+    "addDebt": "Aggiungi Debito",
+    "debtName": "Nome Debito",
+    "originalAmount": "Importo Originale",
+    "remainingAmount": "Importo Rimanente",
+    "minimumPayment": "Pagamento Minimo",
+    "interestRate": "Tasso di Interesse",
+    "paidOff": "Estinto!"
+  },
+  "emergency": {
+    "title": "Fondo di Emergenza",
+    "target": "Obiettivo",
+    "current": "Attuale",
+    "months": "mesi di spese coperti",
+    "contribute": "Contribuisci",
+    "withdraw": "Preleva",
+    "fullyFunded": "Completamente Finanziato!"
+  },
+  "yearEnd": {
+    "title": "Riepilogo di Fine Anno",
+    "year": "Anno",
+    "totalIncome": "Entrate Totali",
+    "totalExpenses": "Uscite Totali",
+    "totalSaved": "Risparmi Totali",
+    "topCategory": "Categoria di Spesa Principale",
+    "biggestWin": "Vittoria Finanziaria Maggiore",
+    "lookingAhead": "Guardando Avanti"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "profile": "Profilo",
+    "displayName": "Nome Visualizzato",
+    "language": "Lingua",
+    "selectLanguage": "Seleziona Lingua",
+    "notifications": "Notifiche",
+    "exportData": "Esporta Dati",
+    "preparingExport": "Preparando l'esportazione dei tuoi dati...",
+    "exportReady": "Esportazione pronta! (demo)",
+    "account": "Account",
+    "freePlan": "Piano Gratuito",
+    "appVersion": "Versione App"
+  },
+  "landing": {
+    "hero": "Il tuo anno, pianificato.",
+    "subtitle": "Uno planner finanziario di 12 mesi che ti aiuta a impostare obiettivi, tracciare spese e costruire ricchezza — un mese alla volta.",
+    "getStarted": "Inizia",
+    "features": {
+      "goals": "Obiettivi Finanziari",
+      "goalsDesc": "Imposta e traccia i tuoi obiettivi finanziari per tutto l'anno",
+      "budget": "Tracciamento Budget",
+      "budgetDesc": "Visibilità delle spese mensili e settimanali",
+      "reflect": "Riflessioni Mensili",
+      "reflectDesc": "Rifletti sui tuoi progressi e celebra i successi",
+      "habits": "Tracciamento Abitudini",
+      "habitsDesc": "Check-in settimanali per restare al top delle finanze"
+    }
+  },
+  "timeOfDay": {
+    "morning": "mattina",
+    "afternoon": "pomeriggio",
+    "evening": "sera"
+  }
+}

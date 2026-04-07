@@ -2,13 +2,16 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {
   User, Mail, Bell, Lock, Download, Info, CreditCard,
-  ChevronRight, CheckCircle, ExternalLink
+  ChevronRight, CheckCircle, ExternalLink, Globe
 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '@/stores/authStore'
 import { upsertProfile, signOut } from '@/lib/supabase'
 import { useToast } from '@/components/ui/ToastProvider'
+import { LANGUAGES } from '@/lib/i18n'
 
 export function SettingsPage() {
+  const { t, i18n } = useTranslation()
   const auth = useAuthStore()
   const isDemo = !auth.user
   const { user, profile, setUser, setProfile } = auth
@@ -166,6 +169,33 @@ export function SettingsPage() {
           >
             <div className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-all ${notifications ? 'right-1' : 'left-1'}`} />
           </button>
+        </div>
+      </div>
+
+      {/* Language */}
+      <div className="card mb-4">
+        <div className="flex items-center gap-2 mb-4">
+          <Globe size={18} className="text-navy" />
+          <h2 className="font-semibold text-sm text-navy">Language</h2>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          {LANGUAGES.map((lang) => (
+            <button
+              key={lang.code}
+              onClick={() => {
+                i18n.changeLanguage(lang.code)
+                addToast({ message: `Language: ${lang.label}`, type: 'success' })
+              }}
+              className={`py-2 px-3 rounded-xl text-sm font-medium transition-all flex flex-col items-center gap-1 ${
+                i18n.language === lang.code
+                  ? 'bg-navy text-white shadow-card'
+                  : 'bg-cream text-navy/70 hover:bg-navy/10'
+              }`}
+            >
+              <span className="text-lg">{lang.flag}</span>
+              <span className="text-xs">{lang.label}</span>
+            </button>
+          ))}
         </div>
       </div>
 

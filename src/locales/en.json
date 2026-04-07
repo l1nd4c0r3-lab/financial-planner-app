@@ -1,0 +1,182 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "done": "Done",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "email": "Email",
+    "password": "Password",
+    "or": "or",
+    "continueWith": "or continue with"
+  },
+  "tabs": {
+    "home": "Home",
+    "goals": "Goals",
+    "budget": "Budget",
+    "reflect": "Reflect",
+    "more": "More"
+  },
+  "auth": {
+    "welcomeBack": "Welcome back.",
+    "createAccount": "Create account.",
+    "signInSubtitle": "Sign in to continue your financial journey.",
+    "signUpSubtitle": "Start your financial planner today.",
+    "dontHaveAccount": "Don't have an account?",
+    "alreadyHaveAccount": "Already have an account?",
+    "continueWithGoogle": "Continue with Google",
+    "connecting": "Connecting...",
+    "welcomeBackMsg": "Welcome back!",
+    "accountCreated": "Account created! Check your email to confirm.",
+    "signInRequired": "Sign in to track",
+    "signInRequiredDesc": "Create a free account to start adding your own transactions and goals.",
+    "signInToContinue": "Sign In / Register",
+    "continueDemo": "Continue browsing demo"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "greeting": "Good {{timeOfDay}},",
+    "thisMonth": "This Month",
+    "income": "Income",
+    "expenses": "Expenses",
+    "balance": "Balance",
+    "recentTransactions": "Recent Transactions",
+    "monthlyProgress": "Monthly Progress",
+    "noTransactions": "No transactions yet",
+    "addFirst": "Add your first transaction",
+    "quickAdd": "Quick Add",
+    "expense": "Expense",
+    "incomeLabel": "Income",
+    "description": "Description",
+    "category": "Category",
+    "amount": "Amount"
+  },
+  "goals": {
+    "title": "Goal Commitment",
+    "myGoal": "My financial goal",
+    "targetAmount": "Target Amount",
+    "targetDate": "Target Date",
+    "monthlyContribution": "Monthly Contribution",
+    "currentProgress": "Current Progress",
+    "daysLeft": "days left",
+    "onTrack": "On Track",
+    "behindSchedule": "Behind Schedule",
+    "goalAchieved": "Goal Achieved!",
+    "setYourGoal": "Set Your Goal",
+    "saveGoal": "Save Goal"
+  },
+  "calendar": {
+    "title": "Calendar",
+    "addGoal": "Add Goal"
+  },
+  "budget": {
+    "title": "Monthly Budget",
+    "setBudget": "Set Budget",
+    "spent": "Spent",
+    "remaining": "Remaining",
+    "overBudget": "Over Budget",
+    "of": "of",
+    "progress": "Progress"
+  },
+  "weekly": {
+    "title": "Weekly Tracker",
+    "week": "Week",
+    "weekTotal": "Week {{n}} Total",
+    "byCategory": "By Category",
+    "transactions": "transactions",
+    "addTransaction": "Add Transaction"
+  },
+  "reflection": {
+    "title": "Monthly Reflection",
+    "prompt": "What money decision are you most proud of this month?",
+    "proudDecision": "What money decision are you most proud of this month?",
+    "lesson": "What's the biggest lesson you learned about money this month?",
+    "improve": "What would you do differently?",
+    "gratitude": "What are you most grateful for financially?",
+    "saveReflection": "Save Reflection"
+  },
+  "habits": {
+    "title": "Habit Tracker",
+    "checkIn": "Weekly Check-in",
+    "didYouCheck": "Did you check in with your finances this week?",
+    "checkedIn": "Checked in!",
+    "streak": "Current Streak",
+    "weeks": "weeks",
+    "checkInPrompt": "I reviewed my budget and finances this week"
+  },
+  "debt": {
+    "title": "Debt Snowball",
+    "totalDebt": "Total Debt",
+    "totalPaid": "Total Paid",
+    "remaining": "Remaining",
+    "snowballPayment": "Snowball Payment",
+    "addDebt": "Add Debt",
+    "debtName": "Debt Name",
+    "originalAmount": "Original Amount",
+    "remainingAmount": "Remaining Amount",
+    "minimumPayment": "Minimum Payment",
+    "interestRate": "Interest Rate",
+    "paidOff": "Paid Off!"
+  },
+  "emergency": {
+    "title": "Emergency Fund",
+    "target": "Target",
+    "current": "Current",
+    "months": "months of expenses covered",
+    "contribute": "Contribute",
+    "withdraw": "Withdraw",
+    "fullyFunded": "Fully Funded!"
+  },
+  "yearEnd": {
+    "title": "Year-End Review",
+    "year": "Year",
+    "totalIncome": "Total Income",
+    "totalExpenses": "Total Expenses",
+    "totalSaved": "Total Saved",
+    "topCategory": "Top Spending Category",
+    "biggestWin": "Biggest Financial Win",
+    "lookingAhead": "Looking Ahead"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "displayName": "Display Name",
+    "language": "Language",
+    "selectLanguage": "Select Language",
+    "notifications": "Notifications",
+    "exportData": "Export Data",
+    "preparingExport": "Preparing your data export...",
+    "exportReady": "Data export ready! (demo)",
+    "account": "Account",
+    "freePlan": "Free Plan",
+    "appVersion": "App Version"
+  },
+  "landing": {
+    "hero": "Your year, planned.",
+    "subtitle": "A 12-month financial planner that helps you set goals, track spending, and build wealth — one month at a time.",
+    "getStarted": "Get Started",
+    "features": {
+      "goals": "Goal Setting",
+      "goalsDesc": "Set and track your financial goals all year long",
+      "budget": "Budget Tracking",
+      "budgetDesc": "Monthly and weekly spending visibility",
+      "reflect": "Monthly Reflections",
+      "reflectDesc": "Reflect on your progress and celebrate wins",
+      "habits": "Habit Tracking",
+      "habitsDesc": "Weekly check-ins to stay on top of your finances"
+    }
+  },
+  "timeOfDay": {
+    "morning": "morning",
+    "afternoon": "afternoon",
+    "evening": "evening"
+  }
+}

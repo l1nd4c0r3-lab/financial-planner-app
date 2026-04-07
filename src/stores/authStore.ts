@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
 import type { Profile } from '@/types'
 
 interface AuthState {
@@ -13,22 +12,15 @@ interface AuthState {
   signOut: () => void
 }
 
-export const useAuthStore = create<AuthState>()(
-  persist(
-    (set) => ({
-      user: null,
-      profile: null,
-      isLoading: true,
+// No persist — Supabase handles session storage via its own localStorage keys.
+// The onAuthStateChange listener in App.tsx keeps this store in sync.
+export const useAuthStore = create<AuthState>()((set) => ({
+  user: null,
+  profile: null,
+  isLoading: true,
 
-      setUser: (user) => set({ user }),
-      setProfile: (profile) => set({ profile }),
-      setLoading: (isLoading) => set({ isLoading }),
-      signOut: () => set({ user: null, profile: null }),
-    }),
-    {
-      name: 'fp-auth',
-      // Only persist user + profile — isDemo is derived from !user
-      partialize: (s) => ({ user: s.user, profile: s.profile }),
-    }
-  )
-)
+  setUser: (user) => set({ user }),
+  setProfile: (profile) => set({ profile }),
+  setLoading: (isLoading) => set({ isLoading }),
+  signOut: () => set({ user: null, profile: null }),
+}))
