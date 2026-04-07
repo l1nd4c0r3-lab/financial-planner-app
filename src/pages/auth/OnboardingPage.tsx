@@ -1,28 +1,28 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { ChevronRight, ChevronLeft, TrendingUp, Target, Sparkles, Shield, Check } from 'lucide-react'
+import { ChevronRight, ChevronLeft, TrendingUp, Target, Sparkles, Shield, Check, Wallet, Rocket, type LucideIcon } from 'lucide-react'
 
-const SLIDES = [
+const SLIDES: { Icon: LucideIcon; title: string; subtitle: string; cta: null | string }[] = [
   {
-    emoji: '💰',
+    Icon: Wallet,
     title: 'Welcome to\nFinancial Planner',
     subtitle: 'Your complete annual financial companion. Track goals, budgets, habits, and reflections — all in one beautiful app.',
     cta: null,
   },
   {
-    emoji: '🎯',
+    Icon: Target,
     title: 'Set Goals &\nStay Accountable',
     subtitle: 'Create savings goals with visual progress. Track your debt snowball and watch your net worth grow month by month.',
     cta: null,
   },
   {
-    emoji: '✅',
+    Icon: Check,
     title: 'Build Habits,\nSee Results',
     subtitle: 'Weekly finance check-ins that take 2 minutes. Habit tracking that actually sticks — and compounds over time.',
     cta: null,
   },
   {
-    emoji: '🚀',
+    Icon: Rocket,
     title: 'Ready to\nGet Started?',
     subtitle: 'Join thousands of people who have transformed their financial lives with Financial Planner.',
     cta: 'start',
@@ -87,7 +87,9 @@ export function OnboardingPage() {
 
       {/* Slide Content */}
       <div className={`flex-1 flex flex-col items-center justify-center px-8 text-center transition-opacity duration-150 ${animating ? 'opacity-0' : 'opacity-100'}`}>
-        <div className="text-7xl mb-8">{slide.emoji}</div>
+        <div className="w-20 h-20 rounded-2xl bg-navy/10 flex items-center justify-center mb-8">
+          <slide.Icon size={40} className="text-navy" />
+        </div>
         <h1 className="font-display text-3xl text-navy leading-tight mb-4 whitespace-pre-line">
           {slide.title}
         </h1>

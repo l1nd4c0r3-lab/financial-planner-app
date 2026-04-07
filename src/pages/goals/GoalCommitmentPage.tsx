@@ -11,13 +11,13 @@ const MILESTONES = [25, 50, 75, 100]
 const GOAL_COLORS = ['#2A9D8F', '#C8A96E', '#C0576B', '#1E2D4F', '#7B9E89', '#9B7EBD']
 
 function MilestoneBadge({ milestone, achieved }: { milestone: number; achieved: boolean }) {
-  const icons: Record<number, string> = { 25: '🌱', 50: '🔥', 75: '⭐', 100: '🏆' }
+  const labels: Record<number, string> = { 25: '25%', 50: '50%', 75: '75%', 100: '100%' }
   return (
     <div className={`flex flex-col items-center gap-0.5 ${achieved ? '' : 'opacity-30 grayscale'}`}>
-      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ${
-        achieved ? 'bg-gold/20' : 'bg-mid-gray/20'
+      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-2xs font-mono font-bold ${
+        achieved ? 'bg-gold/20 text-gold-dark' : 'bg-mid-gray/20 text-mid-gray'
       }`}>
-        {icons[milestone]}
+        {labels[milestone]}
       </div>
       <span className="text-2xs font-mono">{milestone}%</span>
     </div>
@@ -247,7 +247,9 @@ export function GoalCommitmentPage() {
         </div>
         {goals.length === 0 ? (
           <div className="card text-center py-10">
-            <div className="text-4xl mb-3">🎯</div>
+            <div className="w-12 h-12 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-3">
+              <Target size={24} className="text-navy" />
+            </div>
             <div className="text-sm font-semibold text-navy mb-1">No goals yet</div>
             <div className="text-xs text-mid-gray mb-4">Set your first financial goal to get started</div>
             <button onClick={() => setShowAdd(true)} className="btn-primary text-xs">Create Goal</button>
