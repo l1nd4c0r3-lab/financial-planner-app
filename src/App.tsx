@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { useEffect } from 'react'
 import { useAuthStore } from '@/stores/authStore'
 import { TabLayout } from '@/components/ui/TabLayout'
 import { LoginPage } from '@/pages/auth/LoginPage'
@@ -16,42 +17,46 @@ import { YearEndReviewPage } from '@/pages/more/YearEndReviewPage'
 import { SettingsPage } from '@/pages/more/SettingsPage'
 import { LandingPage } from '@/pages/landing/LandingPage'
 import { ToastProvider } from '@/components/ui/ToastProvider'
-import { useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 
 export default function App() {
-  const { user, isLoading, setLoading } = useAuthStore()
+  const { user, isLoading } = useAuthStore()
 
   useEffect(() => {
-    // 1. Restore session synchronously from localStorage (no network round-trip)
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session?.user) {
-        useAuthStore.getState().setUser({
-          id: session.user.id,
-          email: session.user.email || '',
-        })
-        useAuthStore.getState().setProfile(null)
-      } else {
-        useAuthStore.getState().setLoading(false)
-      }
-    })
+    // Bootstrap auth state — runs once on mount.
+    // Uses getState() to update Zustand without triggering a re-render
+    // until the entire bootstrap sequence is complete.
+    const store = useAuthStore.getState()
 
-    // 2. Listen for auth events (login, logout, token refresh)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      const store = useAuthStore.getState()
+    function bootstrap() {
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        if (session?.user) {
+          store.setUser({ id: session.user.id, email: session.user.email || '' })
+          store.setProfile(null)
+        }
+        store.setLoading(false)
+      })
+    }
+
+    bootstrap()
+
+    // Listen for future auth changes (login / logout / token refresh).
+    // Using getState() inside callback avoids triggering React re-renders
+    // until the component that subscribes to the store actually re-renders.
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      const s = useAuthStore.getState()
       if (session?.user) {
-        store.setUser({ id: session.user.id, email: session.user.email || '' })
+        s.setUser({ id: session.user.id, email: session.user.email || '' })
       } else {
-        store.setUser(null)
-        store.setProfile(null)
+        s.setUser(null)
+        s.setProfile(null)
       }
-      store.setLoading(false)
+      s.setLoading(false)
     })
 
     return () => subscription.unsubscribe()
   }, [])
 
-  // Suspense-like loading gate: wait for auth bootstrap before rendering app
   if (isLoading && !user) {
     return (
       <div className="min-h-screen bg-cream flex items-center justify-center">
@@ -66,12 +71,10 @@ export default function App() {
   return (
     <ToastProvider>
       <Routes>
-        {/* Public */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/onboarding" element={<OnboardingPage />} />
 
-        {/* Authenticated — tab layout */}
         <Route element={<TabLayout />}>
           <Route path="/home" element={<DashboardPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
