@@ -16,51 +16,40 @@ import { YearEndReviewPage } from '@/pages/more/YearEndReviewPage'
 import { SettingsPage } from '@/pages/more/SettingsPage'
 import { LandingPage } from '@/pages/landing/LandingPage'
 import { ToastProvider } from '@/components/ui/ToastProvider'
-import { useEffect, useRef } from 'react'
-import { getCurrentUser, supabase } from '@/lib/supabase'
+import { useEffect } from 'react'
+import { supabase } from '@/lib/supabase'
 
 export default function App() {
   const { user, isLoading, setUser, setProfile, setLoading } = useAuthStore()
-  const bootstrapDone = useRef(false)
 
   useEffect(() => {
-    // Listen to ALL Supabase auth state changes (login, logout, token refresh)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    // 1. Get initial session synchronously from localStorage (no network)
+    ;(async () => {
+      const { data: { session } } = await supabase.auth.getSession()
       if (session?.user) {
         setUser({ id: session.user.id, email: session.user.email || '' })
       } else {
+        setLoading(false) // no session → done loading (demo mode)
+      }
+    })()
+
+    // 2. Listen for all future auth changes (login, logout, token refresh)
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (session?.user) {
+        setUser({ id: session.user.id, email: session.user.email || '' })
+        setLoading(false)
+      } else {
         setUser(null)
         setProfile(null)
+        setLoading(false)
       }
     })
-
-    // Bootstrap on first mount — get user from Supabase session (source of truth)
-    async function bootstrap() {
-      try {
-        const supabaseUser = await getCurrentUser()
-        if (supabaseUser) {
-          setUser({ id: supabaseUser.id, email: supabaseUser.email || '' })
-        }
-      } catch {
-        // Supabase unavailable — stay logged out (demo mode via !user)
-      } finally {
-        setLoading(false)
-        bootstrapDone.current = true
-      }
-    }
-
-    if (!bootstrapDone.current) {
-      bootstrap()
-    } else {
-      setLoading(false)
-    }
 
     return () => subscription.unsubscribe()
   }, [])
 
-  const isDemo = !user
-
-  if (isLoading) {
+  // Show loading only while we have a session pending AND haven't set user yet
+  if (isLoading && !user) {
     return (
       <div className="min-h-screen bg-cream flex items-center justify-center">
         <div className="text-center">
