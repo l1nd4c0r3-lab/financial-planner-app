@@ -1,0 +1,18 @@
+{
+  "appId": "com.financialplanner.app",
+  "appName": "Financial Planner",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "backgroundColor": "#FAF8F5"
+    },
+    "StatusBar": {
+      "style": "LIGHT",
+      "backgroundColor": "#1E2D4F"
+    }
+  }
+}

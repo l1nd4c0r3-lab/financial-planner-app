@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #1E2D4F;
+  --color-gold: #C8A96E;
+  --color-teal: #2A9D8F;
+  --color-rose: #C0576B;
+  --color-cream: #FAF8F5;
+  --color-mid-gray: #D8D3CC;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  background-color: #FAF8F5;
+  color: #1A1A1A;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8D3CC;
+  border-radius: 2px;
+}
+
+/* Number inputs */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* Safe area insets */
+.safe-top { padding-top: max(env(safe-area-inset-top), 20px); }
+.safe-bottom { padding-bottom: max(env(safe-area-inset-bottom), 20px); }
+
+/* Transitions */
+.page-enter {
+  animation: slideRight 0.3s ease-out;
+}
+
+@keyframes slideRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-navy text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-150 active:scale-95 shadow-card;
+  }
+  .btn-secondary {
+    @apply bg-white text-navy border border-mid-gray px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-150 active:scale-95 shadow-card;
+  }
+  .btn-ghost {
+    @apply text-navy px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-150 active:scale-95;
+  }
+  .btn-gold {
+    @apply bg-gold text-navy px-4 py-2.5 rounded-xl font-semibold text-sm transition-all duration-150 active:scale-95 shadow-card;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card p-4 transition-all duration-150;
+  }
+  .card-hover {
+    @apply card hover:shadow-card-hover active:scale-[0.98];
+  }
+
+  .input-field {
+    @apply w-full bg-white border border-mid-gray rounded-xl px-4 py-3 text-sm text-navy placeholder:text-mid-gray focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold transition-all;
+  }
+
+  .badge-free {
+    @apply bg-navy/10 text-navy text-2xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wider;
+  }
+  .badge-pro {
+    @apply bg-gold/20 text-gold-dark text-2xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wider;
+  }
+
+  .section-title {
+    @apply text-xs font-bold text-mid-gray uppercase tracking-widest mb-2;
+  }
+  .page-title {
+    @apply font-display text-2xl font-bold text-navy;
+  }
+}
