@@ -73,7 +73,10 @@
     "setYourGoal": "Fija Tu Objetivo",
     "saveGoal": "Guardar Objetivo"
   },
-  "calendar": { "title": "Calendario", "addGoal": "Añadir Objetivo" },
+  "calendar": {
+    "title": "Calendario",
+    "addGoal": "Añadir Objetivo"
+  },
   "budget": {
     "title": "Presupuesto Mensual",
     "setBudget": "Fijar Presupuesto",
@@ -154,7 +157,44 @@
     "exportReady": "¡Exportación lista! (demo)",
     "account": "Cuenta",
     "freePlan": "Plan Gratuito",
-    "appVersion": "Versión de la App"
+    "appVersion": "Versión de la App",
+    "yourName": "Your name",
+    "email": "Email",
+    "demoEmail": "demo@example.com",
+    "demo": "Demo",
+    "saving": "Saving...",
+    "saveProfile": "Save Profile",
+    "profileSaved": "Profile saved!",
+    "profileError": "Failed to save",
+    "subscription": "Subscription",
+    "free": "FREE",
+    "pro": "PRO",
+    "upgradeTitle": "Upgrade to Pro",
+    "upgradeDesc": "Unlock unlimited goals, habits, cloud sync, and more.",
+    "upgradeCta": "Upgrade for €7.99/month",
+    "proMember": "Pro Member",
+    "subscriptionActive": "Your subscription is active",
+    "featureGoals": "Unlimited goals",
+    "featureCategories": "All budget categories",
+    "featureHabits": "Habit tracker",
+    "featureSync": "Cloud sync",
+    "security": "Security",
+    "pinLock": "PIN Lock",
+    "pinLockDesc": "Require PIN to open the app",
+    "pinEnabled": "PIN lock enabled",
+    "pinDisabled": "PIN lock disabled",
+    "weeklyReminders": "Weekly Reminders",
+    "weeklyRemindersDesc": "Remind me to track spending",
+    "notifEnabled": "Notifications enabled",
+    "notifDisabled": "Notifications disabled",
+    "data": "Data",
+    "exportDesc": "Download all your financial data as a CSV file",
+    "exporting": "Preparing your data export...",
+    "about": "About",
+    "version": "Version",
+    "builtWith": "Built with",
+    "viewLanding": "View Landing Page",
+    "signOut": "Sign Out"
   },
   "landing": {
     "hero": "Tu año, planificado.",
@@ -171,5 +211,9 @@
       "habitsDesc": "Check-ins semanales para mantener tus finanzas bajo control"
     }
   },
-  "timeOfDay": { "morning": "días", "afternoon": "tardes", "evening": "noches" }
+  "timeOfDay": {
+    "morning": "días",
+    "afternoon": "tardes",
+    "evening": "noches"
+  }
 }

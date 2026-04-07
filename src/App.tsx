@@ -20,35 +20,38 @@ import { useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 
 export default function App() {
-  const { user, isLoading, setUser, setProfile, setLoading } = useAuthStore()
+  const { user, isLoading, setLoading } = useAuthStore()
 
   useEffect(() => {
-    // 1. Get initial session synchronously from localStorage (no network)
-    ;(async () => {
-      const { data: { session } } = await supabase.auth.getSession()
+    // 1. Restore session synchronously from localStorage (no network round-trip)
+    supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
-        setUser({ id: session.user.id, email: session.user.email || '' })
+        useAuthStore.getState().setUser({
+          id: session.user.id,
+          email: session.user.email || '',
+        })
+        useAuthStore.getState().setProfile(null)
       } else {
-        setLoading(false) // no session → done loading (demo mode)
+        useAuthStore.getState().setLoading(false)
       }
-    })()
+    })
 
-    // 2. Listen for all future auth changes (login, logout, token refresh)
+    // 2. Listen for auth events (login, logout, token refresh)
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      const store = useAuthStore.getState()
       if (session?.user) {
-        setUser({ id: session.user.id, email: session.user.email || '' })
-        setLoading(false)
+        store.setUser({ id: session.user.id, email: session.user.email || '' })
       } else {
-        setUser(null)
-        setProfile(null)
-        setLoading(false)
+        store.setUser(null)
+        store.setProfile(null)
       }
+      store.setLoading(false)
     })
 
     return () => subscription.unsubscribe()
   }, [])
 
-  // Show loading only while we have a session pending AND haven't set user yet
+  // Suspense-like loading gate: wait for auth bootstrap before rendering app
   if (isLoading && !user) {
     return (
       <div className="min-h-screen bg-cream flex items-center justify-center">
@@ -63,12 +66,12 @@ export default function App() {
   return (
     <ToastProvider>
       <Routes>
-        {/* Public routes */}
+        {/* Public */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/onboarding" element={<OnboardingPage />} />
 
-        {/* Authenticated routes — tab layout */}
+        {/* Authenticated — tab layout */}
         <Route element={<TabLayout />}>
           <Route path="/home" element={<DashboardPage />} />
           <Route path="/calendar" element={<CalendarPage />} />
@@ -83,7 +86,6 @@ export default function App() {
           <Route path="/settings" element={<SettingsPage />} />
         </Route>
 
-        {/* Fallback */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </ToastProvider>

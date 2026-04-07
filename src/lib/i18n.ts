@@ -19,7 +19,7 @@ export const LANGUAGES = [
 
 const LANGUAGE_KEY = 'fp-language'
 
-function getInitialLanguage(): string {
+function getSavedLanguage(): string {
   try {
     return localStorage.getItem(LANGUAGE_KEY) || 'en'
   } catch {
@@ -27,21 +27,25 @@ function getInitialLanguage(): string {
   }
 }
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-      en: { translation: en },
-      it: { translation: it },
-      es: { translation: es },
-      fr: { translation: fr },
-      de: { translation: de },
-      pt: { translation: pt },
-    },
-    lng: getInitialLanguage(),
-    fallbackLng: 'en',
-    interpolation: { escapeValue: false },
-  })
+// Synchronously read saved language — must happen BEFORE i18n.init()
+// so React renders with the correct language on the very first paint.
+const savedLanguage = getSavedLanguage()
+
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { translation: en },
+    it: { translation: it },
+    es: { translation: es },
+    fr: { translation: fr },
+    de: { translation: de },
+    pt: { translation: pt },
+  },
+  lng: savedLanguage,
+  fallbackLng: 'en',
+  interpolation: { escapeValue: false },
+  // Deferring reactivity: we handle language persistence manually
+  react: { useSuspense: false },
+})
 
 // Persist language changes to localStorage
 i18n.on('languageChanged', (lng) => {
