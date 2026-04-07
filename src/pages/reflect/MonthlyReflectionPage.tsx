@@ -8,7 +8,9 @@ import { useToast } from '@/components/ui/ToastProvider'
 import { REFLECTION_QUESTIONS, type Reflection } from '@/types'
 
 export function MonthlyReflectionPage() {
-  const { user, isDemo } = useAuthStore()
+  const auth = useAuthStore()
+  const isDemo = !auth.user
+  const { user } = auth
   const { selectedMonth, setSelectedMonth, prevMonth, nextMonth, reflections, setReflections } = usePlannerStore()
   const { addToast } = useToast()
   const [answers, setAnswers] = useState<Record<number, string>>({})

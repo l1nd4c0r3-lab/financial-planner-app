@@ -59,7 +59,9 @@ function AddContributionModal({ onClose, onAdd }: { onClose: () => void; onAdd: 
 }
 
 export function EmergencyFundPage() {
-  const { user, isDemo } = useAuthStore()
+  const auth = useAuthStore()
+  const isDemo = !auth.user
+  const { user } = auth
   const { emergencyFundLogs, setEmergencyFundLogs } = usePlannerStore()
   const { addToast } = useToast()
   const [targetAmount] = useState(10000)

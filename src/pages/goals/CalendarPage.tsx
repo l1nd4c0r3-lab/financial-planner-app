@@ -121,7 +121,9 @@ function AddGoalModal({ month, onClose, onAdd }: {
 }
 
 export function CalendarPage() {
-  const { user, isDemo } = useAuthStore()
+  const auth = useAuthStore()
+  const isDemo = !auth.user
+  const { user } = auth
   const { goals, setGoals, upsertGoal: storeUpsertGoal } = usePlannerStore()
   const { addToast } = useToast()
 

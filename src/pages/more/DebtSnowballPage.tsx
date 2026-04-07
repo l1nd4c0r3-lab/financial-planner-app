@@ -140,7 +140,9 @@ function calculateDebtFreeDate(debts: Debt[]): string {
 }
 
 export function DebtSnowballPage() {
-  const { user, isDemo } = useAuthStore()
+  const auth = useAuthStore()
+  const isDemo = !auth.user
+  const { user } = auth
   const { debts, setDebts } = usePlannerStore()
   const { addToast } = useToast()
   const [showAdd, setShowAdd] = useState(false)

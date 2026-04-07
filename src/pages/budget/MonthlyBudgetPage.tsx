@@ -69,7 +69,9 @@ function BudgetRowItem({ row, onBudgetChange, onSpentChange }: {
 }
 
 export function MonthlyBudgetPage() {
-  const { user, isDemo } = useAuthStore()
+  const auth = useAuthStore()
+  const isDemo = !auth.user
+  const { user } = auth
   const { selectedMonth, setSelectedMonth, prevMonth, nextMonth, transactions, setTransactions } = usePlannerStore()
   const [budget, setBudget] = useState<MonthlyBudget | null>(null)
   const [loading, setLoading] = useState(false)

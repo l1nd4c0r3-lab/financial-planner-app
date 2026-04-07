@@ -25,7 +25,9 @@ interface WeekCategoryTotal {
 function QuickAddModal({ weekOfMonth, month, onClose }: {
   weekOfMonth: WeekNumber; month: string; onClose: () => void
 }) {
-  const { user, isDemo } = useAuthStore()
+  const auth = useAuthStore()
+  const { user } = auth
+  const isDemo = !user
   const { addTransaction } = usePlannerStore()
   const { addToast } = useToast()
   const [amount, setAmount] = useState('')
@@ -95,7 +97,9 @@ function QuickAddModal({ weekOfMonth, month, onClose }: {
 }
 
 export function WeeklyTrackerPage() {
-  const { user, isDemo } = useAuthStore()
+  const auth = useAuthStore()
+  const { user } = auth
+  const isDemo = !user
   const { selectedMonth, transactions, setTransactions } = usePlannerStore()
   const { addToast } = useToast()
   const [activeWeek, setActiveWeek] = useState<WeekNumber>(1)

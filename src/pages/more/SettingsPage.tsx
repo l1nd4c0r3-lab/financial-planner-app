@@ -9,7 +9,9 @@ import { upsertProfile, signOut } from '@/lib/supabase'
 import { useToast } from '@/components/ui/ToastProvider'
 
 export function SettingsPage() {
-  const { user, profile, isDemo, setUser, setProfile } = useAuthStore()
+  const auth = useAuthStore()
+  const isDemo = !auth.user
+  const { user, profile, setUser, setProfile } = auth
   const { addToast } = useToast()
   const navigate = useNavigate()
   const [displayName, setDisplayName] = useState(profile?.display_name || '')

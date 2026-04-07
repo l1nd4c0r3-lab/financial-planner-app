@@ -164,7 +164,9 @@ function AddGoalModal({ onClose, onAdd }: { onClose: () => void; onAdd: (g: Omit
 }
 
 export function GoalCommitmentPage() {
-  const { user, isDemo } = useAuthStore()
+  const auth = useAuthStore()
+  const isDemo = !auth.user
+  const { user } = auth
   const { goals, setGoals, upsertGoal: storeUpsertGoal, removeGoal } = usePlannerStore()
   const { addToast } = useToast()
   const [showAdd, setShowAdd] = useState(false)

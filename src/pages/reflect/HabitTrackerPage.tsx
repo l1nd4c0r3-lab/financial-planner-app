@@ -103,7 +103,9 @@ function AddHabitModal({ onClose, onAdd }: { onClose: () => void; onAdd: (h: Omi
 }
 
 export function HabitTrackerPage() {
-  const { user, isDemo } = useAuthStore()
+  const auth = useAuthStore()
+  const isDemo = !auth.user
+  const { user } = auth
   const { habitGrids, setHabitGrids } = usePlannerStore()
   const { addToast } = useToast()
   const [showAdd, setShowAdd] = useState(false)

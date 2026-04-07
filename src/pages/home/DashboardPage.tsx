@@ -45,7 +45,9 @@ function SavingsRing({ rate }: { rate: number }) {
 }
 
 function QuickAddModal({ onClose }: { onClose: () => void }) {
-  const { user, isDemo } = useAuthStore()
+  const auth = useAuthStore()
+  const { user } = auth
+  const isDemo = !user
   const { addTransaction } = usePlannerStore()
   const { addToast } = useToast()
   const navigate = useNavigate()
@@ -149,7 +151,9 @@ function QuickAddModal({ onClose }: { onClose: () => void }) {
 }
 
 export function DashboardPage() {
-  const { user, isDemo, profile } = useAuthStore()
+  const auth = useAuthStore()
+  const { user, profile } = auth
+  const isDemo = !user
   const { transactions, setTransactions, selectedMonth } = usePlannerStore()
   const [showAdd, setShowAdd] = useState(false)
   const { addToast } = useToast()

@@ -6,12 +6,10 @@ interface AuthState {
   user: { id: string; email: string } | null
   profile: Profile | null
   isLoading: boolean
-  isDemo: boolean
 
   setUser: (user: { id: string; email: string } | null) => void
   setProfile: (profile: Profile | null) => void
   setLoading: (v: boolean) => void
-  setDemo: (v: boolean) => void
   signOut: () => void
 }
 
@@ -21,14 +19,16 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       profile: null,
       isLoading: true,
-      isDemo: false,
 
       setUser: (user) => set({ user }),
       setProfile: (profile) => set({ profile }),
       setLoading: (isLoading) => set({ isLoading }),
-      setDemo: (isDemo) => set({ isDemo }),
       signOut: () => set({ user: null, profile: null }),
     }),
-    { name: 'fp-auth' }
+    {
+      name: 'fp-auth',
+      // Only persist user + profile — isDemo is derived from !user
+      partialize: (s) => ({ user: s.user, profile: s.profile }),
+    }
   )
 )
