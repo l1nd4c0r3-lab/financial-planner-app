@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { format } from 'date-fns'
 import {
   TrendingUp, TrendingDown, PiggyBank, CreditCard,
@@ -48,6 +48,7 @@ function QuickAddModal({ onClose }: { onClose: () => void }) {
   const { user, isDemo } = useAuthStore()
   const { addTransaction } = usePlannerStore()
   const { addToast } = useToast()
+  const navigate = useNavigate()
   const [amount, setAmount] = useState('')
   const [category, setCategory] = useState<BudgetCategory>('Other')
   const [description, setDescription] = useState('')
@@ -57,6 +58,30 @@ function QuickAddModal({ onClose }: { onClose: () => void }) {
     'Housing', 'Transportation', 'Food', 'Utilities', 'Insurance',
     'Healthcare', 'Personal', 'Entertainment', 'Debt Payments', 'Savings', 'Other',
   ]
+
+  // Demo mode: require sign-in
+  if (isDemo) {
+    return (
+      <div className="fixed inset-0 bg-black/40 z-50 flex items-end justify-center" onClick={onClose}>
+        <div className="bg-white rounded-t-3xl w-full max-w-lg p-6 pb-10 animate-slide-up" onClick={(e) => e.stopPropagation()}>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="font-display text-xl text-navy">Sign in to track</h2>
+            <button onClick={onClose} className="text-mid-gray hover:text-navy">✕</button>
+          </div>
+          <p className="text-sm text-mid-gray mb-4">Create a free account to start adding your own transactions and goals.</p>
+          <button
+            onClick={() => { onClose(); navigate('/login') }}
+            className="btn-primary w-full"
+          >
+            Sign In / Register
+          </button>
+          <button onClick={onClose} className="w-full text-center text-sm text-mid-gray mt-3 py-2">
+            Continue browsing demo
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
